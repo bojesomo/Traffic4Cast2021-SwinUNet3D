@@ -30,29 +30,26 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-- a.1) train from scratch
+- a.1)train from scratch (together with inference predictions)
     ```
-    python main.py --gpus 0 --use_all_region
+    python Traffic4Cast2021/main1.py --nodes 1 --gpus 4 --precision 16 --batch-size 5 --epochs 100 --mlp_ratio 1 --stages 4 --patch_size 4 --dropout 0.0 --start_filters 192 --sampling-step 1 --decode_depth 1 --use_neck --lr 1e-4 --optimizer lamb --merge_type both --mix_features --city_category TEMPORAL --memory_efficient
     ```
 - a.2) fine tune a model from a checkpoint
     ```
-    python main.py --gpu_id 1 --use_all_region --mode train --name ALL_real_swinencoder3d_688080 --time-code 20210630T224355 --initial-epoch 58```
-    
-- b.1) evaluate an untrained model (with random weights)
+    python main.py --gpus 1 --city_category TEMPORAL --mode train --name TEMPORAL_real_swinunet3d_141848694 --time-code 20210913T135845 --initial-epoch 36```
+
+- b) evaluate a trained model from a checkpoint (submitted inference)
     ```
-    python main.py --gpus 0 --use_all_region --mode test
-    ```
-- b.2) evaluate a trained model from a checkpoint (submitted inference)
-    ```
-    python main.py --gpu_id 1 --use_all_region --mode test --name ALL_real_swinencoder3d_688080 --time-code 20210630T224355 --initial-epoch 58
+    python main.py --gpus 1 --city_category TEMPORAL --mode test --name TEMPORAL_real_swinunet3d_141848694 --time-code 20210913T135845 --initial-epoch 36
     ```
  
 ## Inference
-To generate predictions using our trained model
+- a) To generate predictions using our trained model
 ```
-R=R1
-INPUT_PATH=../data
-WEIGHTS=logs/ALL_real_swinencoder3d_688080
-OUT_PATH=.
-python inference.py -d $INPUT_PATH -r $R -w $WEIGHTS -o $OUT_PATH -g 1
+python main.py --gpus 1 --city_category TEMPORAL --mode test --name TEMPORAL_real_swinunet3d_141848694 --time-code 20210913T135845 --initial-epoch 36
+```
+
+- b) To create submission in form of a zipped file from files generater in (a)
+```
+python create_submission.py --name TEMPORAL_real_swinunet3d_141848694 --time-code 20210913T135845 --epoch 36
 ```
