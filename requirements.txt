@@ -1,0 +1,5 @@
+timm
+torch-optimizer
+einops
+pytorch-model-summary
+pytorch-lightning
