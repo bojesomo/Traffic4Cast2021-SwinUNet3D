@@ -6,7 +6,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Inference](#inference)
-* [Accessing the trained Checkpoint] (#checkpoint)
+* [Accessing the trained Checkpoint](#checkpoint)
 
 ## General Info
 This resipository contains our code submitted to Traffic4cast2021 competition (https://www.iarai.ac.at/traffic4cast/2021-competition/challenge/#challenge)
