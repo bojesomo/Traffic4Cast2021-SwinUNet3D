@@ -6,6 +6,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Inference](#inference)
+* [Accessing the trained Checkpoint] (#checkpoint)
 
 ## General Info
 This resipository contains our code submitted to Traffic4cast2021 competition (https://www.iarai.ac.at/traffic4cast/2021-competition/challenge/#challenge)
@@ -53,3 +54,6 @@ python main.py --gpus 1 --city_category TEMPORAL --mode test --name TEMPORAL_rea
 ```
 python create_submission.py --name TEMPORAL_real_swinunet3d_141848694 --time-code 20210913T135845 --epoch 36
 ```
+
+## Accessing the trained checkpoint
+Our trained model can be downloaded from https://drive.google.com/file/d/10zM-oiEjRD1rDlDw1bnx06Dl8Z3K3tNQ/view?usp=sharing
