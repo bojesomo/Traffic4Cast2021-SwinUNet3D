@@ -1,4 +1,4 @@
-from hypercomplex import get_comp_mat, get_c
+from fast_hypercomplex import get_comp_mat  #, get_c
 import math
 import numpy as np
 import torch
